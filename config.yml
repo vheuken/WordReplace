@@ -13,9 +13,15 @@
 # - You can also use Pink for Light_Purple
 # This defaults to WHITE if it finds an error
 
+# the replace-user-names node is if you want it so that when a user FULLY
+# types in the name of another user, it is colored. Set to false to disable,
+# set to true for random colors, or set to the color you want to activate.
+
+
 # An Example is "AQUA,Admin,dcsiira:dc:siira"
 # Which replaces the words "dc","dcsiira","siira" with "Admin", Colored in AQUA
 
+replace-user-names: TRUE
 normal-chat-color: WHITE
 word-replace-list:
 - AQUA,Admin,dcsiira:dc:siira

@@ -72,6 +72,10 @@ public class WRConfiguration
         comments += "# - You can also use Pink for Light_Purple\n";
         comments += "# This defaults to WHITE if it finds an error\n";
         comments += "\n";
+        comments += "# the replace-user-names node is if you want it so that when a user FULLY\n";
+        comments += "# types in the name of another user, it is colored. Set to false to disable,\n";
+        comments += "# set to true for random colors, or set to the color you want to activate.\n";
+        comments += "\n";
         comments += "# An Example is \"AQUA,Admin,dcsiira:dc:siira\"\n";
         comments += "# Which replaces the words \"dc\",\"dcsiira\",\"siira\" with \"Admin\", Colored in AQUA\n";
         config.setHeader(comments);
@@ -98,13 +102,13 @@ public class WRConfiguration
         }
         return null;
     }
-
-    
+  
     public void readNodes()
     {
     	plugin.log.info("Loading Config File...");
     	plugin.normalChatColor = this.plugin.getChatColor(readString("normal-chat-color"));
     	plugin.wrList = readStringList("word-replace-list");
+    	plugin.replaceNames = readString("replace-user-names");
     }
     
 

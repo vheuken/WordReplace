@@ -51,7 +51,7 @@ public class WRCommand implements CommandExecutor
         {
         	if(split[0].equalsIgnoreCase("remove"))
         	{
-                remove(Integer.parseInt(split[1]) + 1);
+                remove(Integer.parseInt(split[1]) - 1);
                 sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Removing List Complete");
                 return true;
         	}
@@ -80,7 +80,7 @@ public class WRCommand implements CommandExecutor
             wordsBeingReplaced = wordsBeingReplaced + tempWordBeingReplaced + ", ";
           }
           wordsBeingReplaced = wordsBeingReplaced.substring(0, wordsBeingReplaced.length() - 2);
-          sender.sendMessage(wordsBeingReplaced + "] with " + wordColor + wordReplacing);
+          sender.sendMessage("(" + plugin.getRNDChatColor() +  (listLoop+1) + ChatColor.WHITE + ") " + wordsBeingReplaced + "] with " + wordColor + wordReplacing);
         }
         return true;
       }

@@ -57,7 +57,24 @@ public class WRPlayerListener extends PlayerListener
       return wordColor + wordReplacing + "," + this.plugin.normalChatColor;
     if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "'s"))
       return wordColor + wordReplacing + "'s" + this.plugin.normalChatColor;
+    if(!plugin.replaceNames.equalsIgnoreCase("false"))
+    	return checkNames(wordBeingChecked);
     
     return wordBeingChecked;
+  }
+  public String checkNames(String wordBeingChecked)
+  {
+	  ChatColor nameColor = ChatColor.WHITE;
+	  if(!plugin.replaceNames.equalsIgnoreCase("true"))
+		  nameColor = plugin.getChatColor(plugin.replaceNames);
+	  else
+		  nameColor = plugin.getRNDChatColor();
+	  
+	  for(Player player: plugin.getServer().getOnlinePlayers())
+	  {
+		  if(wordBeingChecked.equalsIgnoreCase(player.getName()) || wordBeingChecked.equalsIgnoreCase(player.getDisplayName()))
+			  return nameColor + player.getDisplayName() + plugin.normalChatColor;
+	  }
+	  return wordBeingChecked;
   }
 }
