@@ -5,4 +5,4 @@ commands:
   WR:
     description: States the version of the plugin or reloads the confiq
     usage: |
-            /WR [Reload | Version | List | Add | Remove]
+            /WR Help

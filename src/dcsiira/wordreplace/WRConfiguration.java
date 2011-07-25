@@ -46,18 +46,18 @@ public class WRConfiguration
         readNodes();
     }
     
-    public void writeNode(String root, Object x)
+    public void writeNode(String node, Object value)
     {
         Configuration config = load();
         addComments(config);
-        config.setProperty(root, x);
+        config.setProperty(node, value);
         config.save();
     }
     
     public void addComments(Configuration config)
     {
     	String comments = "";
-        comments += "# Word Replace Version 5.1\n";
+        comments += "# Word Replace Version 6.0\n";
         comments += "# Changing Word1 -> Word2 since 2011 (Not that long)\n";
         comments += "\n";
         comments += "# Supported colors are: (case insensitive)\n";
@@ -77,9 +77,10 @@ public class WRConfiguration
         comments += "# set to true for random colors, or set to the color you want to activate.\n";
         comments += "\n";
         comments += "# An Example is \"AQUA,Admin,dcsiira:dc:siira\"\n";
-        comments += "# Which replaces the words \"dc\",\"dcsiira\",\"siira\" with \"Admin\", Colored in AQUA\n";
+        comments += "# Which replaces the words \"dc\",\"dcsiira\",\"siira\",\"Admin\" with \"Admin\", Colored in AQUA\n";
         config.setHeader(comments);
     }
+    
     @SuppressWarnings("unchecked")
 	public List<String> readStringList(String root){
         Configuration config = load();
@@ -91,7 +92,8 @@ public class WRConfiguration
         return config.getString(root);
     }
     
-    public Configuration load(){
+    public Configuration load()
+    {
         try {
             Configuration config = new Configuration(configFile);
             config.load();
@@ -106,10 +108,25 @@ public class WRConfiguration
     public void readNodes()
     {
     	plugin.log.info("Loading Config File...");
+    	
+    	try {
     	plugin.normalChatColor = this.plugin.getChatColor(readString("normal-chat-color"));
-    	plugin.wrList = readStringList("word-replace-list");
-    	plugin.replaceNames = readString("replace-user-names");
-    }
-    
+    	}catch (Exception e) {
+    		writeNode("normal-chat-color","WHITE");
+    	}
 
+    	try{
+        	plugin.wrList = readStringList("word-replace-list");
+    	}catch (Exception e) {
+        	writeNode("word-replace-list",plugin.wrList);
+        }
+        	
+        try{
+        	plugin.replaceNames = readString("replace-user-names");
+        }catch (Exception e) {
+            writeNode("replace-user-names","TRUE");
+        }
+
+    }
 }
+    

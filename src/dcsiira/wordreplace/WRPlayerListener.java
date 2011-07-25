@@ -32,11 +32,10 @@ public class WRPlayerListener extends PlayerListener
       {
         String wordReplacing = this.plugin.parseWordReplacing(listLoop);
         ChatColor wordColor = this.plugin.parseWordColor(listLoop);
-        for (String wordBeingReplaced : this.plugin.parseWordsBeingReplaced(listLoop))
-        {
-          wordBeingChecked = checkWord(wordReplacing, wordBeingReplaced, wordBeingChecked, wordColor);
-          wordBeingChecked = checkWord(wordReplacing, wordReplacing, wordBeingChecked, wordColor);
-        }
+        if(this.plugin.parseWordsBeingReplaced(listLoop)!=null)
+        	for (String wordBeingReplaced : this.plugin.parseWordsBeingReplaced(listLoop))
+        		wordBeingChecked = checkWord(wordReplacing, wordBeingReplaced, wordBeingChecked, wordColor);
+        wordBeingChecked = checkWord(wordReplacing, wordReplacing, wordBeingChecked, wordColor);
       }
       out.append(wordBeingChecked).append(" ");
     }

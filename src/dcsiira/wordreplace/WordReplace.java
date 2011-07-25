@@ -115,28 +115,24 @@ public class WordReplace extends JavaPlugin {
         if ((color.equalsIgnoreCase("WHITE")) || (color.equalsIgnoreCase("&f"))) {
           return ChatColor.WHITE;
         }
-        return ChatColor.WHITE;
+        return getRNDChatColor();
       }
+
     public ChatColor getRNDChatColor()
     {
-    	switch ( (int) (Math.random() * 10.0))
+    	switch ( (int) (Math.random() * 11.0))
     	{
-    	case 0 : return ChatColor.BLACK;
-    	case 1 : return ChatColor.DARK_BLUE;
-    	case 2 : return ChatColor.DARK_GREEN;
-    	case 3 : return ChatColor.DARK_AQUA;
-    	case 4 : return ChatColor.DARK_RED;
-    	case 5 : return ChatColor.DARK_PURPLE;
-    	case 6 : return ChatColor.GOLD;
-    	case 7 : return ChatColor.GRAY;
-    	case 8 : return ChatColor.DARK_GRAY;
-    	case 9 : return ChatColor.BLUE;
-    	case 10 : return ChatColor.GREEN;
-    	case 11 : return ChatColor.AQUA;
-    	case 12 : return ChatColor.RED;
-    	case 13 : return ChatColor.LIGHT_PURPLE;
-    	case 14 : return ChatColor.YELLOW;
-    	case 15 : return ChatColor.WHITE;
+    	case 0 : return ChatColor.DARK_GREEN;
+    	case 1 : return ChatColor.DARK_AQUA;
+    	case 2 : return ChatColor.DARK_RED;
+    	case 3 : return ChatColor.DARK_PURPLE;
+    	case 4 : return ChatColor.GOLD;
+    	case 5 : return ChatColor.BLUE;
+    	case 6 : return ChatColor.GREEN;
+    	case 7 : return ChatColor.AQUA;
+    	case 8 : return ChatColor.RED;
+    	case 9 : return ChatColor.LIGHT_PURPLE;
+    	case 10 : return ChatColor.YELLOW;
     	}
     	return ChatColor.WHITE;
       }
@@ -153,7 +149,10 @@ public class WordReplace extends JavaPlugin {
 
       public String[] parseWordsBeingReplaced(int listNumber) {
         String[] split = ((String)wrList.get(listNumber)).split(",");
-        String[] replaceWords = split[2].split(":");
+        String[] replaceWords = null;
+        System.out.println("Split Length ==" + split.length);
+        if(split.length == 3)
+        	replaceWords = split[2].split(":");
         return replaceWords;
       }
 }
