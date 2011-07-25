@@ -150,7 +150,6 @@ public class WordReplace extends JavaPlugin {
       public String[] parseWordsBeingReplaced(int listNumber) {
         String[] split = ((String)wrList.get(listNumber)).split(",");
         String[] replaceWords = null;
-        System.out.println("Split Length ==" + split.length);
         if(split.length == 3)
         	replaceWords = split[2].split(":");
         return replaceWords;
