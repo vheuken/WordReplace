@@ -69,7 +69,7 @@ public class WRConfiguration
         comments += "# - Dark_Purple(&5)       Light_Purple(&d)\n";
         comments += "# - Gold(&6)              Yellow(&e)\n";
         comments += "# - Gray(&7)              White(&f)\n";
-        comments += "# - You can also use Pink for Light_Purple\n";
+        comments += "# - You can also use Pink for Light_Purple and RAND for Random Colors\n";
         comments += "# This defaults to WHITE if it finds an error\n";
         comments += "\n";
         comments += "# the replace-user-names node is if you want it so that when a user FULLY\n";

@@ -80,8 +80,7 @@ public class WordReplace extends JavaPlugin {
     public ChatColor getChatColor(String color)
     {
     	if (color == null)
-    		return ChatColor.WHITE;
-    	
+    		return ChatColor.WHITE;   	
         if ((color.equalsIgnoreCase("BLACK")) || (color.equalsIgnoreCase("&0")))
           return ChatColor.BLACK;
         if ((color.equalsIgnoreCase("DARK_BLUE")) || (color.equalsIgnoreCase("&1")))
@@ -112,9 +111,10 @@ public class WordReplace extends JavaPlugin {
           return ChatColor.LIGHT_PURPLE;
         if ((color.equalsIgnoreCase("YELLOW")) || (color.equalsIgnoreCase("&e")))
           return ChatColor.YELLOW;
-        if ((color.equalsIgnoreCase("WHITE")) || (color.equalsIgnoreCase("&f"))) {
+        if ((color.equalsIgnoreCase("WHITE")) || (color.equalsIgnoreCase("&f")))
           return ChatColor.WHITE;
-        }
+        if ((color.equalsIgnoreCase("RAND")) || (color.equalsIgnoreCase("&f")))
+          return getRNDChatColor();
         return getRNDChatColor();
       }
 
@@ -142,12 +142,12 @@ public class WordReplace extends JavaPlugin {
         return getChatColor(split[0]);
       }
 
-      public String parseWordReplacing(int listNumber) {
+    public String parseWordReplacing(int listNumber) {
         String[] split = ((String)wrList.get(listNumber)).split(",");
         return split[1];
-      }
+    }
 
-      public String[] parseWordsBeingReplaced(int listNumber) {
+    public String[] parseWordsBeingReplaced(int listNumber) {
         String[] split = ((String)wrList.get(listNumber)).split(",");
         String[] replaceWords = null;
         if(split.length == 3)

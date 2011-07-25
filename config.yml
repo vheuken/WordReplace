@@ -10,7 +10,7 @@
 # - Dark_Purple(&5)       Light_Purple(&d)
 # - Gold(&6)              Yellow(&e)
 # - Gray(&7)              White(&f)
-# - You can also use Pink for Light_Purple
+# - You can also use Pink for Light_Purple and RAND for Random Colors
 # This defaults to WHITE if it finds an error
 
 # the replace-user-names node is if you want it so that when a user FULLY
@@ -25,5 +25,5 @@ replace-user-names: TRUE
 normal-chat-color: WHITE
 word-replace-list:
 - AQUA,Admin,dcsiira:dc:siira
-- RED,Notch,Maker:xNotch
+- RAND,Notch,Maker:xNotch
 - DARK_BLUE,WAKAWAKA
