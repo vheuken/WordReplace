@@ -57,7 +57,7 @@ public class WRConfiguration
     public void addComments(Configuration config)
     {
     	String comments = "";
-        comments += "# Word Replace Version 6.0\n";
+        comments += "# Word Replace Version 6.1\n";
         comments += "# Changing Word1 -> Word2 since 2011 (Not that long)\n";
         comments += "\n";
         comments += "# Supported colors are: (case insensitive)\n";
