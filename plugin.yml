@@ -6,3 +6,11 @@ commands:
     description: States the version of the plugin or reloads the confiq
     usage: |
             /WR Help
+  WReplace:
+    description: States the version of the plugin or reloads the confiq
+    usage: |
+            /WReplace Help
+  WordReplace:
+    description: States the version of the plugin or reloads the confiq
+    usage: |
+            /WordReplace Help

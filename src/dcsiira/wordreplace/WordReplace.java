@@ -26,6 +26,7 @@ public class WordReplace extends JavaPlugin {
     public boolean enabled;
     
     private final WRPlayerListener playerListener = new WRPlayerListener(this);
+    private final WRCommand command = new WRCommand(this);
     private final HashMap<Player, Boolean> debugees = new HashMap<Player, Boolean>();
 
 
@@ -56,9 +57,9 @@ public class WordReplace extends JavaPlugin {
         
         pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Priority.Lowest, this); //Register Event type/priority with Bukkit
 
-        getCommand("WR").setExecutor(new WRCommand(this)); //Register command "/WR" with Bukkit
-        getCommand("WReplace").setExecutor(new WRCommand(this)); //Register command "/WR" with Bukkit
-        getCommand("WordReplace").setExecutor(new WRCommand(this)); //Register command "/WR" with Bukkit
+        getCommand("WR").setExecutor(command); //Register command "/WR" with Bukkit
+        getCommand("WReplace").setExecutor(command); //Register command "/WR" with Bukkit
+        getCommand("WordReplace").setExecutor(command); //Register command "/WR" with Bukkit
         
         System.out.println(this.getDescription().getName() + " version " + this.getDescription().getVersion() + " is enabled!" );
     }

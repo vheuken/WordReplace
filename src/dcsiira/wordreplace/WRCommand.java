@@ -27,6 +27,11 @@ public class WRCommand implements CommandExecutor
     		sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] You are not able to use this command, OP's only");
     		return true;
     	}
+    	if (split.length == 0)
+    	{
+    		help(sender,"null",label.toUpperCase());
+    		return true;
+    	}
         if (split.length == 1)
         {
         	if(split[0].equalsIgnoreCase("version"))
@@ -48,7 +53,7 @@ public class WRCommand implements CommandExecutor
         	}
         	else if(split[0].equalsIgnoreCase("help"))
         	{
-        		help(sender,"null");
+        		help(sender,"null",label.toUpperCase());
             	return true;
         	}
         }
@@ -67,7 +72,7 @@ public class WRCommand implements CommandExecutor
         	}
         	if(split[0].equalsIgnoreCase("help"))
         	{
-                help(sender,split[1]);
+                help(sender,split[1],label.toUpperCase());
                 return true;
         	}
         }
@@ -152,32 +157,32 @@ public class WRCommand implements CommandExecutor
 
     }
 
-    public boolean help(CommandSender sender, String helpSubject)
+    public boolean help(CommandSender sender, String helpSubject, String label)
     {
     	if(helpSubject.equalsIgnoreCase("Version"))
-    		sender.sendMessage(ChatColor.AQUA + "/WR Version " + ChatColor.WHITE + "- Replies with the version of WordReplace in use.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Version " + ChatColor.WHITE + "- Replies with the version of WordReplace in use.");
     	if(helpSubject.equalsIgnoreCase("Reload"))
-    		sender.sendMessage(ChatColor.AQUA + "/WR Reload  " + ChatColor.WHITE + "- Reloads the configuration file of WordReplace.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Reload  " + ChatColor.WHITE + "- Reloads the configuration file of WordReplace.");
     	if(helpSubject.equalsIgnoreCase("List"))
-      		sender.sendMessage(ChatColor.AQUA + "/WR List    " + ChatColor.WHITE + "- Replies with the WordReplace list");
+      		sender.sendMessage(ChatColor.AQUA + "/" + label + " List    " + ChatColor.WHITE + "- Replies with the WordReplace list");
     	else if(helpSubject.equalsIgnoreCase("Add"))
-    		sender.sendMessage(ChatColor.AQUA + "/WR Add <ReplaceToColor> <ReplaceToWord> <ReplacingWord> (ReplacingWord) (ReplacingWord)...");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Add <ReplaceToColor> <ReplaceToWord> <ReplacingWord> (ReplacingWord) (ReplacingWord)...");
     	else if(helpSubject.equalsIgnoreCase("Remove"))
-    		sender.sendMessage(ChatColor.AQUA + "/WR Remove <ListNumber> - The List Number is found by using /WR List");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Remove <ListNumber> - The List Number is found by using /WR List");
       	else if(helpSubject.equalsIgnoreCase("Names"))
-    		sender.sendMessage(ChatColor.AQUA + "/WR Names <Value> - Change the value of the ReplaceNames node to this.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Names <Value> - Change the value of the ReplaceNames node to this.");
     	else if(helpSubject.equalsIgnoreCase("Help"))
-    		sender.sendMessage(ChatColor.AQUA + "/WR Help (Command) - You're asking for help with the help command? REALLY?");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Help (Command) - You're asking for help with the help command? REALLY?");
     	else
     	{
     		sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE + "] Command Usage:");
-    		sender.sendMessage(ChatColor.AQUA + "/WR Version " + ChatColor.WHITE + "- Replies with the version of WordReplace in use.");
-    		sender.sendMessage(ChatColor.AQUA + "/WR Reload  " + ChatColor.WHITE + "- Reloads the configuration file of WordReplace.");
-    		sender.sendMessage(ChatColor.AQUA + "/WR List    " + ChatColor.WHITE + "- Replies with the WordReplace list");
-    		sender.sendMessage(ChatColor.AQUA + "/WR Add     " + ChatColor.WHITE + "- Adds a word list to WordReplace.");
-    		sender.sendMessage(ChatColor.AQUA + "/WR Remove  " + ChatColor.WHITE + "- Removes a word list from WordReplace");
-    		sender.sendMessage(ChatColor.AQUA + "/WR Names   " + ChatColor.WHITE + "- Used to change the value of the ReplaceNames feature.");
-    		sender.sendMessage(ChatColor.AQUA + "/WR Help    " + ChatColor.WHITE + "- Add a command to the end to learn more.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Version " + ChatColor.WHITE + "- Replies with the version of WordReplace in use.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Reload  " + ChatColor.WHITE + "- Reloads the configuration file of WordReplace.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " List    " + ChatColor.WHITE + "- Replies with the WordReplace list");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Add     " + ChatColor.WHITE + "- Adds a word list to WordReplace.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Remove  " + ChatColor.WHITE + "- Removes a word list from WordReplace");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Names   " + ChatColor.WHITE + "- Used to change the value of the ReplaceNames feature.");
+    		sender.sendMessage(ChatColor.AQUA + "/" + label + " Help    " + ChatColor.WHITE + "- Add a command to the end to learn more.");
  
     	}
     	return true;
