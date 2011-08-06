@@ -57,6 +57,9 @@ public class WordReplace extends JavaPlugin {
         pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Priority.Lowest, this); //Register Event type/priority with Bukkit
 
         getCommand("WR").setExecutor(new WRCommand(this)); //Register command "/WR" with Bukkit
+        getCommand("WReplace").setExecutor(new WRCommand(this)); //Register command "/WR" with Bukkit
+        getCommand("WordReplace").setExecutor(new WRCommand(this)); //Register command "/WR" with Bukkit
+        
         System.out.println(this.getDescription().getName() + " version " + this.getDescription().getVersion() + " is enabled!" );
     }
 

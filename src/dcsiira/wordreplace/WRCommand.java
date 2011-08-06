@@ -60,6 +60,11 @@ public class WRCommand implements CommandExecutor
                 sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Removing List Complete");
                 return true;
         	}
+        	if(split[0].equalsIgnoreCase("names"))
+        	{
+                changeNames(sender, split[1]);
+                return true;
+        	}
         	if(split[0].equalsIgnoreCase("help"))
         	{
                 help(sender,split[1]);
@@ -159,6 +164,8 @@ public class WRCommand implements CommandExecutor
     		sender.sendMessage(ChatColor.AQUA + "/WR Add <ReplaceToColor> <ReplaceToWord> <ReplacingWord> (ReplacingWord) (ReplacingWord)...");
     	else if(helpSubject.equalsIgnoreCase("Remove"))
     		sender.sendMessage(ChatColor.AQUA + "/WR Remove <ListNumber> - The List Number is found by using /WR List");
+      	else if(helpSubject.equalsIgnoreCase("Names"))
+    		sender.sendMessage(ChatColor.AQUA + "/WR Names <Value> - Change the value of the ReplaceNames node to this.");
     	else if(helpSubject.equalsIgnoreCase("Help"))
     		sender.sendMessage(ChatColor.AQUA + "/WR Help (Command) - You're asking for help with the help command? REALLY?");
     	else
@@ -169,7 +176,26 @@ public class WRCommand implements CommandExecutor
     		sender.sendMessage(ChatColor.AQUA + "/WR List    " + ChatColor.WHITE + "- Replies with the WordReplace list");
     		sender.sendMessage(ChatColor.AQUA + "/WR Add     " + ChatColor.WHITE + "- Adds a word list to WordReplace.");
     		sender.sendMessage(ChatColor.AQUA + "/WR Remove  " + ChatColor.WHITE + "- Removes a word list from WordReplace");
+    		sender.sendMessage(ChatColor.AQUA + "/WR Names   " + ChatColor.WHITE + "- Used to change the value of the ReplaceNames feature.");
     		sender.sendMessage(ChatColor.AQUA + "/WR Help    " + ChatColor.WHITE + "- Add a command to the end to learn more.");
+ 
+    	}
+    	return true;
+    }
+    
+    public boolean changeNames(CommandSender sender, String value)
+    {
+    	if(!plugin.replaceNames.equalsIgnoreCase("FALSE"))
+    	{
+    		plugin.replaceNames = "false";
+			this.plugin.config.writeNode("replace-user-names","FALSE");
+	        sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Replacing Names Disabled.");
+    	}
+    	else
+    	{
+    		plugin.replaceNames = value;
+			this.plugin.config.writeNode("replace-user-names",value);
+	        sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Replacing Names Enabled.");
     	}
     	return true;
     }

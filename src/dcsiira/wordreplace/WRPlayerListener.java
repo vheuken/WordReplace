@@ -28,6 +28,7 @@ public class WRPlayerListener extends PlayerListener
 
     for (String wordBeingChecked : split)
     {
+		  wordBeingChecked = checkNames(wordBeingChecked);
       for (int listLoop = 0; listLoop < this.plugin.wrList.size(); listLoop++)
       {
         String wordReplacing = this.plugin.parseWordReplacing(listLoop);
@@ -44,22 +45,20 @@ public class WRPlayerListener extends PlayerListener
 
   public String checkWord(String wordReplacing, String wordBeingReplaced, String wordBeingChecked, ChatColor wordColor)
   {
-	if(!plugin.replaceNames.equalsIgnoreCase("false"))
-	  return checkNames(wordBeingChecked);
-    if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced))
-      return wordColor + wordReplacing + this.plugin.normalChatColor;
-    if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "!"))
-      return wordColor + wordReplacing + "!" + this.plugin.normalChatColor;
-    if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "!!!"))
-      return wordColor + wordReplacing + "!!!" + this.plugin.normalChatColor;
-    if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "?"))
-      return wordColor + wordReplacing + "?" + this.plugin.normalChatColor;
-    if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + ","))
-      return wordColor + wordReplacing + "," + this.plugin.normalChatColor;
-    if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "'s"))
-      return wordColor + wordReplacing + "'s" + this.plugin.normalChatColor;
-    
-    return wordBeingChecked;
+	  if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced))
+		  return wordColor + wordReplacing + this.plugin.normalChatColor;
+	  else if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "!"))
+		  return wordColor + wordReplacing + "!" + this.plugin.normalChatColor;
+	  else if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "!!!"))
+		  return wordColor + wordReplacing + "!!!" + this.plugin.normalChatColor;
+	  else if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "?"))
+		  return wordColor + wordReplacing + "?" + this.plugin.normalChatColor;
+	  else if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + ","))
+		  return wordColor + wordReplacing + "," + this.plugin.normalChatColor;
+	  else if (wordBeingChecked.equalsIgnoreCase(wordBeingReplaced + "'s"))
+		  return wordColor + wordReplacing + "'s" + this.plugin.normalChatColor;
+	  else
+		  return wordBeingChecked;
   }
   public String checkNames(String wordBeingChecked)
   {

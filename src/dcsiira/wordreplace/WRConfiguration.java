@@ -124,7 +124,7 @@ public class WRConfiguration
         try{
         	plugin.replaceNames = readString("replace-user-names");
         }catch (Exception e) {
-            writeNode("replace-user-names","TRUE");
+            writeNode("replace-user-names","FALSE");
         }
 
     }
