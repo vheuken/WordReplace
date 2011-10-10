@@ -28,7 +28,6 @@ public class WRPlayerListener extends PlayerListener
 
     for (String wordBeingChecked : split)
     {
-		  wordBeingChecked = checkNames(wordBeingChecked);
       for (int listLoop = 0; listLoop < this.plugin.wrList.size(); listLoop++)
       {
         String wordReplacing = this.plugin.parseWordReplacing(listLoop);
@@ -38,8 +37,12 @@ public class WRPlayerListener extends PlayerListener
         		wordBeingChecked = checkWord(wordReplacing, wordBeingReplaced, wordBeingChecked, wordColor);
         wordBeingChecked = checkWord(wordReplacing, wordReplacing, wordBeingChecked, wordColor);
       }
+      if(plugin.replaceNames)
+    	  wordBeingChecked = checkNames(wordBeingChecked);
       out.append(wordBeingChecked).append(" ");
     }
+    
+    
     return out.toString();
   }
 
@@ -63,9 +66,6 @@ public class WRPlayerListener extends PlayerListener
   public String checkNames(String wordBeingChecked)
   {
 	  ChatColor nameColor = ChatColor.WHITE;
-	  if(!plugin.replaceNames.equalsIgnoreCase("true"))
-		  nameColor = plugin.getChatColor(plugin.replaceNames);
-	  else
 		  nameColor = plugin.getRNDChatColor();
 	  
 	  for(Player player: plugin.getServer().getOnlinePlayers())

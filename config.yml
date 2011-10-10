@@ -1,4 +1,4 @@
-# Word Replace Version 6.1
+# Word Replace Version 8.0
 # Changing Word1 -> Word2 since 2011 (Not that long)
 
 # Supported colors are: (case insensitive)
@@ -15,7 +15,7 @@
 
 # the replace-user-names node is if you want it so that when a user FULLY
 # types in the name of another user, it is colored. Set to false to disable,
-# set to true for random colors, or set to the color you want to activate.
+# set to true for random colors, currently cannot set the color.
 
 
 # An Example is "AQUA,Admin,dcsiira:dc:siira"

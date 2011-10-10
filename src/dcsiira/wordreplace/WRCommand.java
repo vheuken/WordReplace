@@ -56,6 +56,11 @@ public class WRCommand implements CommandExecutor
         		help(sender,"null",label.toUpperCase());
             	return true;
         	}
+        	if(split[0].equalsIgnoreCase("names"))
+        	{
+                changeNames(sender, "");
+                return true;
+        	}
         }
         if (split.length == 2)
         {
@@ -102,7 +107,7 @@ public class WRCommand implements CommandExecutor
         	  }
           wordsBeingReplaced = wordsBeingReplaced + wordReplacing + ", ";
           wordsBeingReplaced = wordsBeingReplaced.substring(0, wordsBeingReplaced.length() - 2);
-          sender.sendMessage("(" + plugin.getRNDChatColor() +  (listLoop+1) + ChatColor.WHITE + ") " + wordsBeingReplaced + "] with " + wordColor + wordReplacing);
+          sender.sendMessage("(" + wordColor +  (listLoop+1) + ChatColor.WHITE + ") " + wordsBeingReplaced + "] with " + wordColor + wordReplacing);
         }
         return true;
       }
@@ -190,18 +195,20 @@ public class WRCommand implements CommandExecutor
     
     public boolean changeNames(CommandSender sender, String value)
     {
-    	if(!plugin.replaceNames.equalsIgnoreCase("FALSE"))
-    	{
-    		plugin.replaceNames = "false";
-			this.plugin.config.writeNode("replace-user-names","FALSE");
-	        sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Replacing Names Disabled.");
-    	}
+    	if(value.equalsIgnoreCase("true"))
+    		plugin.replaceNames = true;
+    	else if(value.equalsIgnoreCase("false"))
+    		plugin.replaceNames = false;
     	else
-    	{
-    		plugin.replaceNames = value;
-			this.plugin.config.writeNode("replace-user-names",value);
+    		plugin.replaceNames = !plugin.replaceNames;
+
+		this.plugin.config.writeNode("replace-user-names",plugin.replaceNames);
+		if(plugin.replaceNames)
 	        sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Replacing Names Enabled.");
-    	}
+		else
+	        sender.sendMessage("[" + ChatColor.AQUA + "WordReplace" + ChatColor.WHITE +"] Replacing Names Disabled.");
+
+    	
     	return true;
     }
 }

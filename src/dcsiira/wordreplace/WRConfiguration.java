@@ -57,7 +57,7 @@ public class WRConfiguration
     public void addComments(Configuration config)
     {
     	String comments = "";
-        comments += "# Word Replace Version 7.0\n";
+        comments += "# Word Replace Version 8.0\n";
         comments += "# Changing Word1 -> Word2 since 2011 (Not that long)\n";
         comments += "\n";
         comments += "# Supported colors are: (case insensitive)\n";
@@ -74,7 +74,7 @@ public class WRConfiguration
         comments += "\n";
         comments += "# the replace-user-names node is if you want it so that when a user FULLY\n";
         comments += "# types in the name of another user, it is colored. Set to false to disable,\n";
-        comments += "# set to true for random colors, or set to the color you want to activate.\n";
+        comments += "# set to true for random colors, currently cannot set the color.\n";
         comments += "\n";
         comments += "# An Example is \"AQUA,Admin,dcsiira:dc:siira\"\n";
         comments += "# Which replaces the words \"dc\",\"dcsiira\",\"siira\",\"Admin\" with \"Admin\", Colored in AQUA\n";
@@ -90,6 +90,10 @@ public class WRConfiguration
     public String readString(String root){
         Configuration config = load();
         return config.getString(root);
+    }
+    public boolean readBoolean(String root){
+        Configuration config = load();
+        return config.getBoolean(root, false);
     }
     
     public Configuration load()
@@ -122,7 +126,7 @@ public class WRConfiguration
         }
         	
         try{
-        	plugin.replaceNames = readString("replace-user-names");
+        	plugin.replaceNames = readBoolean("replace-user-names");
         }catch (Exception e) {
             writeNode("replace-user-names","FALSE");
         }

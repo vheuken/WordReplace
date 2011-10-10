@@ -33,7 +33,7 @@ public class WordReplace extends JavaPlugin {
     public List<String>  wrList;
     public ChatColor normalChatColor;
     
-    public String replaceNames;
+    public boolean replaceNames;
     
     private PluginManager pm;
     public Logger log;
