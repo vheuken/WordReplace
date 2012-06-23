@@ -3,9 +3,9 @@ package dcsiira.wordreplace;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
-import org.bukkit.event.player.PlayerListener;
+import org.bukkit.event.Listener;
 
-public class WRPlayerListener extends PlayerListener
+public class WRPlayerListener implements Listener
 {
   private final WordReplace plugin;
 
