@@ -10,7 +10,9 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Event;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event.Priority;
+import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -53,7 +55,8 @@ public class WordReplace extends JavaPlugin {
         System.out.println("[WordReplace] Plugin Disabled"); //Show Plugin Disabled in Log File
         pm.disablePlugin(this);
     }
-
+    
+    
     public void onEnable()
     {
         this.pm = getServer().getPluginManager();
@@ -61,7 +64,8 @@ public class WordReplace extends JavaPlugin {
         this.wordreplace = getFile();
         config.configCheck();
         
-        pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Priority.Lowest, this); //Register Event type/priority with Bukkit
+        //pm.registerEvent(playerListener, playerListener, EventPriority.LOWEST, this); //Register Event type/priority with Bukkit
+        getServer().getPluginManager().registerEvents(playerListener, this);
         
         getCommand("WR").setExecutor(command); //Register command "/WR" with Bukkit
         getCommand("WReplace").setExecutor(command); //Register command "/WR" with Bukkit
