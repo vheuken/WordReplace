@@ -13,7 +13,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.config.Configuration;
+
+//This has been deprecated.
+//Remove when port to new Configuration system is complete
+//import org.bukkit.util.config.Configuration;
+
+import org.bukkit.configuration.file.FileConfiguration;
+
 /**
  * Word Replacing Plugin for Bukkit
  *
@@ -56,7 +62,7 @@ public class WordReplace extends JavaPlugin {
         config.configCheck();
         
         pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Priority.Lowest, this); //Register Event type/priority with Bukkit
-
+        
         getCommand("WR").setExecutor(command); //Register command "/WR" with Bukkit
         getCommand("WReplace").setExecutor(command); //Register command "/WR" with Bukkit
         getCommand("WordReplace").setExecutor(command); //Register command "/WR" with Bukkit

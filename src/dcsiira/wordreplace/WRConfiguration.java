@@ -7,9 +7,14 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.bukkit.util.config.Configuration;
+// This has been deprecated.
+// Remove when port to new Configuration system is complete
+// import org.bukkit.util.config.Configuration;
 
-public class WRConfiguration
+import org.bukkit.plugin.java.JavaPlugin;
+
+
+public class WRConfiguration extends JavaPlugin
 {
     private WordReplace plugin;
     File configFile;
@@ -35,7 +40,15 @@ public class WRConfiguration
         		is.read(buf, 0, (int)entry.getSize());
         		os.write(buf);
         		os.close();
-        		this.plugin.getConfiguration().load();
+        		
+        		// very confused as to what this is supposed to do
+        		// getConfiguration() doesn't seem to be implemented
+        		//this.plugin.getConfiguration().load();
+        		
+        		// this may or may not work
+        		load();
+        		
+        		
         		System.out.println("WordReplace: configuration file generated successfully");
         	}
         	catch (Exception e)
@@ -48,13 +61,13 @@ public class WRConfiguration
     
     public void writeNode(String node, Object value)
     {
-        Configuration config = load();
-        addComments(config);
-        config.setProperty(node, value);
-        config.save();
+        load();
+        addComments();
+        this.getConfig().set(node, value);
+        this.getConfig().save(configFile);
     }
     
-    public void addComments(Configuration config)
+    public void addComments()
     {
     	String comments = "";
         comments += "# Word Replace Version 8.0\n";
@@ -78,35 +91,38 @@ public class WRConfiguration
         comments += "\n";
         comments += "# An Example is \"AQUA,Admin,dcsiira:dc:siira\"\n";
         comments += "# Which replaces the words \"dc\",\"dcsiira\",\"siira\",\"Admin\" with \"Admin\", Colored in AQUA\n";
-        config.setHeader(comments);
+        
+        this.getConfig().options().copyHeader(true);
+        this.getConfig().options().header(comments);
+        
     }
     
     @SuppressWarnings("unchecked")
 	public List<String> readStringList(String root){
-        Configuration config = load();
-        return ((List<String>)config.getProperty(root));
+        load();
+        // not 100% sure if getConfig().getConfigurationSection(root)
+        // is the same as config.getProperty(root)
+        // but i'll assume it is and if it isn't ill fix it later
+        return ((List<String>)this.getConfig().getConfigurationSection(root));
     }
    
     public String readString(String root){
-        Configuration config = load();
-        return config.getString(root);
+        load();
+        return this.getConfig().getString(root);
     }
     public boolean readBoolean(String root){
-        Configuration config = load();
-        return config.getBoolean(root, false);
+        load();
+        return this.getConfig().getBoolean(root, false);
     }
     
-    public Configuration load()
+    public void load()
     {
         try {
-            Configuration config = new Configuration(configFile);
-            config.load();
-            return config;
+            this.getConfig().load(configFile);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
   
     public void readNodes()
