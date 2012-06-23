@@ -2,6 +2,7 @@ package dcsiira.wordreplace;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -64,7 +65,12 @@ public class WRConfiguration extends JavaPlugin
         load();
         addComments();
         this.getConfig().set(node, value);
-        this.getConfig().save(configFile);
+        
+        try {
+        	this.getConfig().save(configFile);
+        } catch (IOException e) {
+        	e.getStackTrace();
+        }
     }
     
     public void addComments()
