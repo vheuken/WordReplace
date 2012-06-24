@@ -100,7 +100,6 @@ public class WRConfiguration
     
 	public List<String> readStringList(String root){
         load();
-        System.out.println(plugin.getConfig().getStringList(root));
         return plugin.getConfig().getStringList(root);
     }
    
