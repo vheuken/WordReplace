@@ -8,14 +8,9 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-// This has been deprecated.
-// Remove when port to new Configuration system is complete
-// import org.bukkit.util.config.Configuration;
-
-import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class WRConfiguration extends JavaPlugin
+public class WRConfiguration
 {
     private WordReplace plugin;
     File configFile;
@@ -64,10 +59,10 @@ public class WRConfiguration extends JavaPlugin
     {
         load();
         addComments();
-        this.getConfig().set(node, value);
+        plugin.getConfig().set(node, value);
         
         try {
-        	this.getConfig().save(configFile);
+        	plugin.getConfig().save(configFile);
         } catch (IOException e) {
         	e.getStackTrace();
         }
@@ -98,8 +93,8 @@ public class WRConfiguration extends JavaPlugin
         comments += "# An Example is \"AQUA,Admin,dcsiira:dc:siira\"\n";
         comments += "# Which replaces the words \"dc\",\"dcsiira\",\"siira\",\"Admin\" with \"Admin\", Colored in AQUA\n";
         
-        this.getConfig().options().copyHeader(true);
-        this.getConfig().options().header(comments);
+        plugin.getConfig().options().copyHeader(true);
+        plugin.getConfig().options().header(comments);
         
     }
     
@@ -109,22 +104,22 @@ public class WRConfiguration extends JavaPlugin
         // not 100% sure if getConfig().getConfigurationSection(root)
         // is the same as config.getProperty(root)
         // but i'll assume it is and if it isn't ill fix it later
-        return ((List<String>)this.getConfig().getConfigurationSection(root));
+        return ((List<String>)plugin.getConfig().getConfigurationSection(root));
     }
    
     public String readString(String root){
         load();
-        return this.getConfig().getString(root);
+        return plugin.getConfig().getString(root);
     }
     public boolean readBoolean(String root){
         load();
-        return this.getConfig().getBoolean(root, false);
+        return plugin.getConfig().getBoolean(root, false);
     }
     
     public void load()
     {
         try {
-            this.getConfig().load(configFile);
+            plugin.getConfig().load(configFile);
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -56,7 +56,6 @@ public class WordReplace extends JavaPlugin {
         pm.disablePlugin(this);
     }
     
-    
     public void onEnable()
     {
         this.pm = getServer().getPluginManager();
