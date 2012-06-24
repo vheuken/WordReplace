@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.EventHandler;
+import org.bukkit.plugin.EventExecutor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -64,7 +65,8 @@ public class WordReplace extends JavaPlugin {
         config.configCheck();
         
         //pm.registerEvent(playerListener, playerListener, EventPriority.LOWEST, this); //Register Event type/priority with Bukkit
-        getServer().getPluginManager().registerEvents(playerListener, this);
+        //getServer().getPluginManager().registerEvents(playerListener, this);
+        getServer().getPluginManager().registerEvent(PlayerChatEvent.class, playerListener, EventPriority.LOWEST, playerListener , this);
         
         getCommand("WR").setExecutor(command); //Register command "/WR" with Bukkit
         getCommand("WReplace").setExecutor(command); //Register command "/WR" with Bukkit

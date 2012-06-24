@@ -105,7 +105,6 @@ public class WRConfiguration
    
     public String readString(String root){
         load();
-        System.out.println(plugin.getConfig().getString(root));
         return plugin.getConfig().getString(root);
     }
     public boolean readBoolean(String root){

@@ -3,17 +3,24 @@ package dcsiira.wordreplace;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.EventExecutor;
 
-public class WRPlayerListener implements Listener
+public class WRPlayerListener implements Listener, EventExecutor
 {
   private final WordReplace plugin;
 
+  public void execute (Listener listener, Event event)
+  {
+	  this.onPlayerChat((PlayerChatEvent)event);
+  }
+  
   public WRPlayerListener(WordReplace plugin)
   {
     this.plugin = plugin;
   }
-
+  
   public void onPlayerChat(PlayerChatEvent event)
   {
     Player player = event.getPlayer();

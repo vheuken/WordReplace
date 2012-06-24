@@ -118,12 +118,15 @@ public class WRCommand implements CommandExecutor
     	{
     		if(split.length == 2)
     		{
+
     			this.plugin.wrList.add(split[0]);
     			this.plugin.config.writeNode("word-replace-list",this.plugin.wrList);
     			this.plugin.config.readNodes();
     		}
     		else
     		{
+    	    	System.out.println("HI");
+
     			String newList = split[1] + "," + split[2] + ",";
     			if(split.length != 3)
     			{
@@ -133,6 +136,7 @@ public class WRCommand implements CommandExecutor
     				}
     			    newList = newList.substring(0, newList.length()-1);
     			}
+			    System.out.println(newList);
     			this.plugin.wrList.add(newList);
     			this.plugin.config.writeNode("word-replace-list",this.plugin.wrList);
     			this.plugin.config.readNodes();
