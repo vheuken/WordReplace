@@ -98,13 +98,10 @@ public class WRConfiguration
         
     }
     
-    @SuppressWarnings("unchecked")
 	public List<String> readStringList(String root){
         load();
-        // not 100% sure if getConfig().getConfigurationSection(root)
-        // is the same as config.getProperty(root)
-        // but i'll assume it is and if it isn't ill fix it later
-        return ((List<String>)plugin.getConfig().getConfigurationSection(root));
+        System.out.println(plugin.getConfig().getStringList(root));
+        return plugin.getConfig().getStringList(root);
     }
    
     public String readString(String root){
