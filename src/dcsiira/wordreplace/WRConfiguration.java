@@ -71,7 +71,7 @@ public class WRConfiguration
     public void addComments()
     {
     	String comments = "";
-        comments += "# Word Replace Version 8.0\n";
+        comments += "# Word Replace Version 8.1\n";
         comments += "# Changing Word1 -> Word2 since 2011 (Not that long)\n";
         comments += "\n";
         comments += "# Supported colors are: (case insensitive)\n";
@@ -105,6 +105,7 @@ public class WRConfiguration
    
     public String readString(String root){
         load();
+        System.out.println(plugin.getConfig().getString(root));
         return plugin.getConfig().getString(root);
     }
     public boolean readBoolean(String root){
